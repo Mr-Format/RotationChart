@@ -1,4 +1,5 @@
 function move(obj,attr,target,speed,callback){
+	clearInterval(obj.timer);
 	var current = parseInt(getStyle(obj,attr));
 	if(current > target){
 		speed = -speed;
@@ -12,6 +13,7 @@ function move(obj,attr,target,speed,callback){
 		
 		obj.style[attr] = newValue +"px";
 		if(newValue == target){
+			clearInterval(obj.timer);
 			callback && callback();
 		}
 	},30);
